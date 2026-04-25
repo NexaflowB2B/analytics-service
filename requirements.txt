@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt<4.0.0
+python-multipart
+python-dotenv
+reportlab
+pytesseract
+Pillow
+requests
+google-genai
