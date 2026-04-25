@@ -1,0 +1,13 @@
+﻿name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  call-parent-ci:
+    uses: NexaflowB2B/ci/.github/workflows/parent-ci.yaml@main
