@@ -11,3 +11,4 @@ on:
 jobs:
   call-parent-ci:
     uses: NexaflowB2B/ci/.github/workflows/parent-ci.yaml@main
+    secrets: inherit
