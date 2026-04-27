@@ -22,7 +22,13 @@ DATABASE_URL = os.getenv(
 )
 engine = create_engine(DATABASE_URL)
 
-@app.get("/forecast/{product_id}")
+@app.get(
+    "/forecast/{product_id}",
+    responses={
+        404: {"description": "Product not found"},
+        500: {"description": "Unexpected analytics service error"},
+    },
+)
 def get_forecast(product_id: int):
     try:
         with engine.connect() as conn:
@@ -48,6 +54,8 @@ def get_forecast(product_id: int):
                 "days_left": days_left,
                 "message": f"Stock will run out in {days_left} days"
             }
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
