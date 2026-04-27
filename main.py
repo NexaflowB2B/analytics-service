@@ -16,7 +16,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@db:5432/finventory_db")
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@postgres:5432/finventory_db",
+)
 engine = create_engine(DATABASE_URL)
 
 @app.get("/forecast/{product_id}")
